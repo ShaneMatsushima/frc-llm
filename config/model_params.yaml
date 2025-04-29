@@ -1,0 +1,81 @@
+# Model Architecture Parameters
+model_type: "gpt2"
+model_size: "medium"  # small, medium, large, xl
+hidden_size: 1024
+num_attention_heads: 16
+num_hidden_layers: 24
+max_position_embeddings: 1024
+vocab_size: 50257  # GPT-2 default
+
+# Tokenizer Parameters
+special_tokens:
+  - "<alliance>"
+  - "<autonomous>"
+  - "<teleop>"
+  - "<endgame>"
+  - "<ranking_points>"
+  - "<penalty>"
+  - "<coopertition>"
+  - "<rule>"
+  - "<strategy>"
+  - "<match>"
+
+# Training Parameters
+learning_rate: 3e-5
+batch_size: 8
+gradient_accumulation_steps: 2
+num_train_epochs: 5
+weight_decay: 0.01
+warmup_steps: 500
+max_grad_norm: 1.0
+lr_scheduler_type: "linear"
+
+# Data Processing
+max_seq_length: 512
+stride: 128
+preprocessing_workers: 4
+
+# Inference Parameters
+generation:
+  max_length: 200
+  temperature: 0.7
+  top_k: 50
+  top_p: 0.95
+  repetition_penalty: 1.2
+  num_return_sequences: 1
+
+# FRC-Specific Parameters
+game_years:
+  - 2023
+  - 2022
+  - 2021
+  - 2020
+
+rule_categories:
+  - "robot"
+  - "field"
+  - "game"
+  - "tournament"
+  - "safety"
+
+strategy_components:
+  - "autonomous"
+  - "teleop"
+  - "endgame"
+  - "defense"
+  - "alliance"
+
+# Evaluation Metrics
+evaluation_metrics:
+  - "bleu"
+  - "rouge"
+  - "exact_match"
+  - "rule_accuracy"
+  - "strategy_quality"
+
+# Paths
+paths:
+  data_dir: "./data"
+  model_dir: "./models"
+  logs_dir: "./logs"
+  outputs_dir: "./outputs"
